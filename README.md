@@ -1,3 +1,9 @@
+# AI Weather App
+Introducing a powerful weather application that combines advanced features with cutting-edge technologies. Developed using React, Next.js, Tailwind CSS, JavaScript, Apollo GraphQL, and StepZen, this app offers a seamless and immersive weather tracking experience.
+
+With its responsive user interface and modern design, the app provides an intuitive and visually appealing interface that adapts to any device. Real-time weather data integration ensures accurate forecasts and up-to-date information. Users can rely on the app's precise weather predictions to plan their activities with confidence.
+
+Customizable settings allow users to personalize the app according to their preferences, ensuring a tailored experience. Interactive maps provide a dynamic visualization of weather conditions, allowing users to explore and understand the forecast better.
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
