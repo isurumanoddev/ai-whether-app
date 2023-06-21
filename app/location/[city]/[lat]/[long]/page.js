@@ -25,8 +25,8 @@ async function getData(latitude, longitude) {
             query: fetchWeatherQuery,
             variables: {
                 current_weather: "true",
-                daily: "",
-                hourly: "",
+                daily: "temperature_2m_max,temperature_2m_min,sunset,sunrise,uv_index_max",
+                hourly: "temperature_2m,uv_index",
                 latitude: `${latitude}`,
                 longitude: `${longitude}`,
                 timezone: "GMT",
@@ -44,8 +44,8 @@ async function weather({params: {city, lat, long}}) {
 
     const {data} = await getData(lat, long)
     const results = data?.myQuery
-    // console.log("results  ------  ", results)
-    console.log("results  ------  ", results.hourly)
+    console.log("results  ------  ", results)
+    // console.log("results  ------  ", results.hourly)
     // console.log("hourly  ------  ", results.hourly.time)
 
 
@@ -67,18 +67,18 @@ async function weather({params: {city, lat, long}}) {
                                                               warning={false}/></div>
                     <div className={"grid  grid-cols-1 lg:grid-cols-2 gap-5 m-2 "}>
                         <StatCard title={"Maximum Temperature"}
-                                  metric={`${results.current_weather.temperature?.toFixed(1)} °C`}
+                                  metric={`${results.daily.temperature_2m_max[0]?.toFixed(1)} °C`}
                                   color={"orange"}
                         />
                         <StatCard title={"Minimum Temperature"}
-                                  metric={`${results.current_weather.temperature?.toFixed(1)} °C`}
+                                  metric={`${results.daily.temperature_2m_min[0]?.toFixed(1)} °C`}
                                   color={"blue"}
                         />
 
 
                         <div>
                             <StatCard title={"UV Index"}
-                                      metric={results.current_weather.temperature?.toFixed(1)}
+                                      metric={results.hourly.uv_index[12]?.toFixed(1)}
                                       color={"red"}
                             />
                             {

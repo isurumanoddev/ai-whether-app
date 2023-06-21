@@ -64,7 +64,7 @@ function InformationPanel({city, lat, long, results}) {
                     <div className={"flex justify-between items-center flex-1 pl-3"}>
 
                         <p className={"font-extralight"}>Sunrise</p>
-                        <p className={"font-semibold"}>{new Date(results.daily.sunrise).toLocaleTimeString()}</p>
+                        <p className={"font-semibold"}>{new Date(results.daily.sunrise[0]).toLocaleTimeString()}</p>
 
                     </div>
                 </div>
@@ -73,7 +73,7 @@ function InformationPanel({city, lat, long, results}) {
                     <div className={"flex justify-between items-center flex-1 pl-3"}>
 
                         <p className={"font-extralight"}>Sunset</p>
-                        <p className={"font-semibold"}>{new Date(results.daily.sunset).toLocaleTimeString()}</p>
+                        <p className={"font-semibold"}>{new Date(results.daily.sunset[0]).toLocaleTimeString()}</p>
 
                     </div>
                 </div>

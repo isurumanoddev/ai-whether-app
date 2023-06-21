@@ -11,15 +11,18 @@ function TempChart({results}) {
             hour12: false
         })
     ).slice(0, 24)
+     const tempData = results.hourly?.temperature_2m.map(
+        temp => temp).slice(0, 24)
+
     // console.log("results ::: ",results?.hourly["time"])
 
 
     const chartData = hourData.map((hour, index) => ({
-        time: Number(hour),
-        "UV Index":Number(index),
-        // "UV Index":results.hourly?.uv_index[index],
+        time: Number(index+1),
+        // "UV Index":temp[index],
+        "UV Index":results.hourly?.uv_index[index],
         // "Temperature (C)":results.hourly?.temperature_2m[index],
-        "Temperature (C)":4,
+        "Temperature (C)":tempData[index],
 
     }))
     // console.log("chartData : ",chartData)
