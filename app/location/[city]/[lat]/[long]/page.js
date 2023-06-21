@@ -42,7 +42,11 @@ async function getData(latitude, longitude) {
 async function weather({params: {city, lat, long}}) {
 
 
-
+    const {data} = await getData(lat, long)
+    const results = data?.myQuery
+    // console.log("results  ------  ", results)
+    console.log("results  ------  ", results.hourly)
+    // console.log("hourly  ------  ", results.hourly.time)
 
 
     return (
