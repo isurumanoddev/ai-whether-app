@@ -9,7 +9,35 @@ import InformationPanel from "@/components/InformationPanel";
 import TempChart from "@/components/TempChart";
 
 
+async function getData(latitude, longitude) {
 
+    const client = new ApolloClient({
+        uri: process.env.API_URL,
+        cache: new InMemoryCache(),
+        headers: {
+            Authorization: `apikey ${process.env.NEXT_PUBLIC_STEPZEN_API_KEY}`
+        },
+
+
+    })
+    try {
+        return await client.query({
+            query: fetchWeatherQuery,
+            variables: {
+                current_weather: "true",
+                daily: "",
+                hourly: "",
+                latitude: `${latitude}`,
+                longitude: `${longitude}`,
+                timezone: "GMT",
+            },
+        })
+    } catch (e) {
+        console.log("error ", e)
+    }
+
+
+}
 
 async function weather({params: {city, lat, long}}) {
 
