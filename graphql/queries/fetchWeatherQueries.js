@@ -32,7 +32,7 @@ const fetchWeatherQuery = gql`
                 time
                 weathercode
                 temperature_2m_min
-                uv_index_max
+            
                 sunset
                 sunrise
             }
