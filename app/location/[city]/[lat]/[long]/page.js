@@ -8,6 +8,7 @@ import StatCard from "@/components/StatCard";
 import InformationPanel from "@/components/InformationPanel";
 import TempChart from "@/components/TempChart";
 import RainChart from "@/components/RainChart";
+import HumadityChart from "@/components/HumadityChart";
 
 
 async function getData(latitude, longitude) {
@@ -27,7 +28,7 @@ async function getData(latitude, longitude) {
             variables: {
                 current_weather: "true",
                 daily: "temperature_2m_max,temperature_2m_min,sunset,sunrise",
-                hourly: "precipitation_probability,temperature_2m,uv_index",
+                hourly: "precipitation_probability,temperature_2m,uv_index,relativehumidity_2m",
                 latitude: `${latitude}`,
                 longitude: `${longitude}`,
                 timezone: "GMT",
@@ -102,6 +103,7 @@ async function weather({params: {city, lat, long}}) {
 
                     <TempChart className={" p-4 lg:px-10"} results={results}/>
                     <RainChart className={" p-4 lg:px-10"} results={results}/>
+                    <HumadityChart className={" p-4 lg:px-10"} results={results}/>
 
                 </div>
 
