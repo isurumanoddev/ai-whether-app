@@ -11,6 +11,7 @@ import RainChart from "@/components/RainChart";
 import HumadityChart from "@/components/HumadityChart";
 
 
+
 async function getData(latitude, longitude) {
 
     const client = new ApolloClient({
