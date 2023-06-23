@@ -26,7 +26,7 @@ function TempChart({results}) {
     }))
     // console.log("chartData : ",chartData)
 
-    const dataFormatter = (number) => `${number} °C`;
+    const dataFormatter = (number) => `${number} %`;
     return (
         <Card className={"mt-4"}>
             <Title>Relative Humadity</Title>
