@@ -8,14 +8,14 @@ function InformationPanel({city, lat, long, results}) {
 
 
     return (
-        <div className={"p-10 bg-blue-500  text-white bg-gradient-to-br from-[#394F68] to-[#183B7E] "}>
-            <div className={"pb-5"}>
+        <div className={"p-10 bg-blue-500  bg-gradient-to-br from-[#394F68] to-[#183B7E] "}>
+            <div className={"pb-5  text-white"}>
                 <h1 className={"text-4xl font-bold pb-2"}>{decodeURI(city)}</h1>
                 <p className={"text-sm text-gray-400"}>Long/Lat : {long} , {lat}</p>
             </div>
-            <CityPicker/>
+            <CityPicker />
             <hr className="my-8"/>
-            <div className={"my-5 flex items-center justify-between"}>
+            <div className={"my-5 flex items-center justify-between  text-white"}>
                 <div className={""}>
                     <p className="text-sm">
                         {
@@ -39,7 +39,7 @@ function InformationPanel({city, lat, long, results}) {
                 </p>
             </div>
             <hr className="mt-8 mb-4"/>
-            <div className={"flex justify-between items-center"}>
+            <div className={"flex justify-between items-center  text-white"}>
                 <div>
                     <Image
                         width={75}
