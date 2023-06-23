@@ -9,7 +9,8 @@ import InformationPanel from "@/components/InformationPanel";
 import TempChart from "@/components/TempChart";
 import RainChart from "@/components/RainChart";
 import HumadityChart from "@/components/HumadityChart";
-
+import getBasePath from "@/lib/getBasePath";
+import cleanData from "@/lib/cleanData";
 
 
 async function getData(latitude, longitude) {
@@ -45,12 +46,29 @@ async function getData(latitude, longitude) {
 async function weather({params: {city, lat, long}}) {
 
 
+
     const {data} = await getData(lat, long)
     const results = data?.myQuery
     // console.log("results  ------  ", results)
 
-    const dataToSend = cleanData(results,city)
+    const dataToSend = cleanData(results, city)
 
+
+    const response = await fetch(`http://localhost:3000/api/getWeatherSummary`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({weatherData: dataToSend})
+    });
+
+    if (!response.ok) {
+        console.log(`HTTP error! Status: ${response.status}`);
+    }
+
+    const GPTSummary = await response.json();
+    const {content} = GPTSummary;
+    console.log("---------------------content-----------------------",content)
 
 
     return (
@@ -67,8 +85,9 @@ async function weather({params: {city, lat, long}}) {
                         <p className={"text-sm text-gray-400"}>Last updated at
                             : {new Date(results.current_weather.time).toLocaleString()}</p>
                     </div>
-                    <div className={"m-2 mb-10"}><ColloutCard message={"This is where GPT-3.5 Summary will go !"}
-                                                              warning={false}/></div>
+                    <div className={"m-2 mb-10"}>
+                        <ColloutCard message={content}
+                                     warning={false}/></div>
                     <div className={"grid  grid-cols-1 lg:grid-cols-2 gap-5 m-2 "}>
                         <StatCard title={"Maximum Temperature"}
                                   metric={`${results.daily.temperature_2m_max[0]?.toFixed(1)} °C`}
@@ -86,8 +105,9 @@ async function weather({params: {city, lat, long}}) {
                                       color={"red"}
                             />
                             {
-                                Number(results.hourly.uv_index[12])  > 5  ?  <ColloutCard message={"UV Index is too high wear a SPF"} warning/> :
-                                     <ColloutCard message={"UV Index is Normal levels "} />
+                                Number(results.hourly.uv_index[12]) > 5 ?
+                                    <ColloutCard message={"UV Index is too high wear a SPF"} warning/> :
+                                    <ColloutCard message={"UV Index is Normal levels "}/>
                             }
                         </div>
                         <div className={"flex gap-4"}>
