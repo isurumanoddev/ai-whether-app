@@ -7,6 +7,7 @@ import ColloutCard from "@/components/ColloutCard";
 import StatCard from "@/components/StatCard";
 import InformationPanel from "@/components/InformationPanel";
 import TempChart from "@/components/TempChart";
+import RainChart from "@/components/RainChart";
 
 
 async function getData(latitude, longitude) {
@@ -25,8 +26,8 @@ async function getData(latitude, longitude) {
             query: fetchWeatherQuery,
             variables: {
                 current_weather: "true",
-                daily: "temperature_2m_max,temperature_2m_min,sunset,sunrise,uv_index_max",
-                hourly: "temperature_2m,uv_index",
+                daily: "temperature_2m_max,temperature_2m_min,sunset,sunrise",
+                hourly: "precipitation_probability,temperature_2m,uv_index",
                 latitude: `${latitude}`,
                 longitude: `${longitude}`,
                 timezone: "GMT",
@@ -82,12 +83,13 @@ async function weather({params: {city, lat, long}}) {
                                       color={"red"}
                             />
                             {
-                                Number(4) > 2 && <ColloutCard message={"UV Index is too high wear a SPF"} warning/>
+                                Number(results.hourly.uv_index[12])  > 5  ?  <ColloutCard message={"UV Index is too high wear a SPF"} warning/> :
+                                     <ColloutCard message={"UV Index is Normal levels "} />
                             }
                         </div>
                         <div className={"flex gap-4"}>
                             <StatCard title={"Wind Direction"}
-                                      metric={results.current_weather.winddirection?.toFixed(1)}
+                                      metric={`${results.current_weather.winddirection?.toFixed(1)}°`}
                                       color={"cyan"}
                             />
                             <StatCard title={"Wind Speed"}
@@ -99,6 +101,8 @@ async function weather({params: {city, lat, long}}) {
                     </div>
 
                     <TempChart className={" p-4 lg:px-10"} results={results}/>
+                    <RainChart className={" p-4 lg:px-10"} results={results}/>
+
                 </div>
 
 

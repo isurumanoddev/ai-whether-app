@@ -20,26 +20,26 @@ function TempChart({results}) {
     const chartData = hourData.map((hour, index) => ({
         time: Number(index+1),
 
-        "UV Index":results.hourly?.uv_index[index],
 
         "Temperature (C)":tempData[index],
+        "Rain (%)":results.hourly?.precipitation_probability[index],
 
     }))
     // console.log("chartData : ",chartData)
 
-    const dataFormatter = (number) => `${number} °C`;
+    const dataFormatter = (number) => `${number} %`;
     return (
         <Card className={"mt-4"}>
-            <Title>Temperature and UV Index</Title>
+            <Title>Rain Probability </Title>
             <AreaChart
                 className="h-72 mt-6"
                 data={chartData}
                 index="time"
                 showLegend
-                categories={["Temperature (C)","UV Index"]}
-                colors={["yellow", "rose"]}
+                categories={[ "Rain (%)"]}
+                colors={["blue"]}
                 minValue={0}
-                yAxisWidth={40}
+                yAxisWidth={100 }
 
                 valueFormatter={dataFormatter}
 
