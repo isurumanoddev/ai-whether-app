@@ -9,11 +9,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # Technologies used in developing the AI Weather App:
 
 React: A popular JavaScript library for building user interfaces.
+
 Next.js: A framework for server-side rendering and building React applications.
+
 Tailwind CSS: A utility-first CSS framework for creating modern and responsive designs.
+
 JavaScript: The programming language that powers the app's functionality.
+
 Chat GPT: OpenAI's powerful language model that enhances the app's conversational capabilities.
+
 Apollo GraphQL: A robust GraphQL client that enables efficient data fetching and integration.
+
 StepZen: A data integration platform that simplifies connecting multiple data sources.
 
 # Key Features of the AI Weather App:
