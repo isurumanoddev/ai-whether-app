@@ -15,6 +15,17 @@ JavaScript: The programming language that powers the app's functionality.
 Chat GPT: OpenAI's powerful language model that enhances the app's conversational capabilities.
 Apollo GraphQL: A robust GraphQL client that enables efficient data fetching and integration.
 StepZen: A data integration platform that simplifies connecting multiple data sources.
+
+# Key Features of the AI Weather App:
+
+Real-time Weather Updates: The app provides instant and up-to-date weather information, including temperature, humidity, wind speed, and more.
+Location-based Forecasting: Users can get weather forecasts specific to their current location, ensuring accurate and personalized results.
+Responsive Design: The app is designed to offer a seamless experience across various devices, adapting to different screen sizes and orientations.
+Sleek and Intuitive Interface: The app's modern and minimalist design makes it easy to navigate and find the desired weather information.
+Personalization: Users can customize their preferences, such as temperature units (Celsius or Fahrenheit) and the choice of weather data to display.
+Detailed Forecasting: The app provides forecasts for the upcoming hours, as well as extended forecasts for multiple days.
+Data Integration: Apollo GraphQL and StepZen seamlessly integrate data from multiple sources, ensuring comprehensive and accurate weather information.
+
 ## Getting Started
 
 First, run the development server:
