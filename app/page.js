@@ -16,7 +16,7 @@ export default function Home() {
                 <Subtitle className={"text-sm text-center"}>Powered by Next js ,Open AI ,Tailwind CSS ,Tremor 2.0 + More
                     !</Subtitle>
 
-                <Divider className={"my-10 "}/>
+                <Divider  className={"my-10 bg-blue-950"}/>
 
                 <Card className="rounded-lg ring-gray-200 bg-gradient-to-br from-[#394F68] to-[#183B7E] ">
                     <CityPicker/>

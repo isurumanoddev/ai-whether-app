@@ -51,24 +51,24 @@ async function weather({params: {city, lat, long}}) {
     const results = data?.myQuery
     // console.log("results  ------  ", results)
 
-    const dataToSend = cleanData(results, city)
-
-
-    const response = await fetch(`http://localhost:3000/api/getWeatherSummary`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({weatherData: dataToSend})
-    });
-
-    if (!response.ok) {
-        console.log(`HTTP error! Status: ${response.status}`);
-    }
-
-    const GPTSummary = await response.json();
-    const {content} = GPTSummary;
-    console.log("---------------------content-----------------------",content)
+    // const dataToSend = cleanData(results, city)
+    //
+    //
+    // const response = await fetch(`http://localhost:3000/api/getWeatherSummary`, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({weatherData: dataToSend})
+    // });
+    //
+    // if (!response.ok) {
+    //     console.log(`HTTP error! Status: ${response.status}`);
+    // }
+    //
+    // const GPTSummary = await response.json();
+    // const {content} = GPTSummary;
+    // console.log("---------------------content-----------------------",content)
 
 
     return (
@@ -86,7 +86,7 @@ async function weather({params: {city, lat, long}}) {
                             : {new Date(results.current_weather.time).toLocaleString()}</p>
                     </div>
                     <div className={"m-2 mb-10"}>
-                        <ColloutCard message={content}
+                        <ColloutCard message={"Ongoing Project , Chat GPT weather summary report using OpenAI API will added soon ................................"}
                                      warning={false}/></div>
                     <div className={"grid  grid-cols-1 lg:grid-cols-2 gap-5 m-2 "}>
                         <StatCard title={"Maximum Temperature"}
